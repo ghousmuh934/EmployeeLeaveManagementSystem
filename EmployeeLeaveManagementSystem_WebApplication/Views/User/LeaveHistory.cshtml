@@ -1,0 +1,88 @@
+﻿@model IEnumerable<EmployeeLeaveManagementSystem_WebApplication.Models.ApplyLeave>
+
+@{
+    ViewBag.Title = "LeaveHistory";
+    Layout = "~/Views/Shared/_EmpDashLayout.cshtml";
+}
+
+<h2>LeaveHistory</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LeaveType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ToDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FromDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Postingdate)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.AdminRemarks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.LeaveType)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ToDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FromDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Description)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Postingdate)
+    </td>
+
+
+    <td>
+        @Html.DisplayFor(modelItem => item.AdminRemarks)
+
+    </td>
+
+
+    <td>
+        @if (ViewBag.App == 0)
+        {
+            <b style="color:Blue;">Waiting For Approval</b>
+
+        }
+        else if (ViewBag.App == 1)
+        {
+            <b style="color:Green;">Approved</b>
+        }
+        else
+        {
+            <b style="color:red;">Not Approved</b>
+        }
+    </td>
+
+    @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>*@
+</tr>
+}
+
+</table>

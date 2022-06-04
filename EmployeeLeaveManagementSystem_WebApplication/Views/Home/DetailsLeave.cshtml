@@ -1,0 +1,133 @@
+﻿@model EmployeeLeaveManagementSystem_WebApplication.Models.LeaveRemarks
+
+@{
+    ViewBag.Title = "DetailsLeave";
+    Layout = "~/Views/Shared/_DashLayout.cshtml";
+}
+
+<h2>DetailsLeave</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.empid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.empid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeaveType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeaveType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeaveDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeaveDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostingDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostingDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @if (ViewBag.App == 0)
+            {
+                <b style="color:Blue;">Waiting For Approval</b>
+
+            }
+            else if (ViewBag.App == 1)
+            {
+                <b style="color:Green;">Approved</b>
+            }
+            else
+            {
+                <b style="color:red;">Not Approved</b>
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdminRemarks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdminRemarks)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdminRemarksDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdminRemarksDate)
+        </dd>
+        <dd>
+            @Html.HiddenFor(model => model.Id)
+        </dd>
+       
+    </dl>
+</div>
+
+<p>
+    <a href="@Url.Action("TakeAction", "Home", new {  id=Model.Id  })">
+        <input type="submit" value="Take Action" class="btn-primary">
+
+    </a>
+</p>

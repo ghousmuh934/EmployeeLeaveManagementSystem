@@ -1,0 +1,81 @@
+﻿@model IEnumerable<EmployeeLeaveManagementSystem_WebApplication.Models.ApplyLeave>
+
+@{
+    ViewBag.Title = "LeaveHistory";
+    Layout = "~/Views/Shared/_DashLayout.cshtml";
+}
+
+<h2>LeaveHistory</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+           #
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LeaveType)
+        </th>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.Postingdate)
+        </th>
+  
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+     
+
+        <th>Action</th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FullName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LeaveType)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Postingdate)
+    </td>
+
+    <td>
+        @if (ViewBag.App == 0)
+        {
+            <b style="color:Blue;">Waiting For Approval</b>
+
+        }
+        else if (ViewBag.App == 1)
+        {
+            <b style="color:Green;">Approved</b>
+        }
+        else
+        {
+            <b style="color:red;">Not Approved</b>
+        }
+    </td>
+
+
+    @Html.HiddenFor(modelItem => item.lid)
+
+
+
+    <td>
+        <a href="@Url.Action("DetailsLeave", "Home", new {  id=item.lid  })">
+            <input type="submit" value="Detail View" class="btn-primary">
+
+        </a>
+    </td>
+</tr>
+}
+
+</table>

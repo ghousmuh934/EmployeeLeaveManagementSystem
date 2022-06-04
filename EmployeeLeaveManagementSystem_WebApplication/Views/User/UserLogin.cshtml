@@ -1,0 +1,50 @@
+﻿
+@model EmployeeLeaveManagementSystem_WebApplication.Models.Login
+@{
+    ViewBag.Title = "UserLogin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+ Employee <span class="primary">Login</span> </span> </h2>
+
+   </div>
+</div>
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Tabs Titles -->
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <b>Employee Login</b>
+        </div>
+
+        <!-- Login Form -->
+        @using (Html.BeginForm("UserLogin", "User", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <form>
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.UserEmail, new { htmlAttributes = new { @class = "fadeIn second", @placeholder = "Enter UserName" } })
+                @Html.ValidationMessageFor(model => model.UserEmail, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "fadeIn third", @placeholder = "Enter Password" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                @ViewBag.res<br>
+
+                <input type="submit" class="fadeIn fourth" value="Log In" />
+
+            </form>
+
+        }
+
+        <!-- Remind Passowrd -->
+        @*<div id="formFooter">
+                <a class="underlineHover" href="#">Forgot Password?</a><br>
+                <a class="underlineHover" href="#">Create an Account?</a>
+            </div>*@
+
+    </div>
+</div>
+

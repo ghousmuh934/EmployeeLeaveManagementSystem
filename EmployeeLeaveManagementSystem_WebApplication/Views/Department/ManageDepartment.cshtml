@@ -1,0 +1,60 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model IPagedList<EmployeeLeaveManagementSystem_WebApplication.Models.Department>
+
+@{
+    ViewBag.Title = "ManageDepartment";
+    Layout = "~/Views/Shared/_DashLayout.cshtml";
+}
+
+<h2>Manage Department</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().depName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().depShortNm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().depCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().creationDate)
+        </th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.depName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.depShortNm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.depCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.creationDate)
+            </td>
+            <td>
+                <a href="@Url.Action("EditDepartment", "Department", new {  id=item.id  })">
+                    <i class="glyphicon glyphicon-pencil" style="font-size:20px;"></i>
+
+                </a>
+
+                <a href="@Url.Action("Delete", "Department", new {  id=item.id  })">
+                    <i class="glyphicon glyphicon-remove" style="font-size:20px;"></i>
+
+                </a>
+
+
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("ManageDepartment", new { page }), new PagedListRenderOptions() { DisplayItemSliceAndTotal = true })

@@ -1,0 +1,66 @@
+﻿@model EmployeeLeaveManagementSystem_WebApplication.Models.ApplyLeave
+
+@{
+    ViewBag.Title = "AppNewLeave";
+    Layout = "~/Views/Shared/_EmpDashLayout.cshtml";
+}
+
+<h2>AppNewLeave</h2>
+
+@using (Html.BeginForm("AppNewLeave", "User", FormMethod.Post)) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.LeaveType, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-4">
+
+            @Html.DropDownListFor(model => model.LeaveType, (List<SelectListItem>)ViewBag.LType, "Select", new { @class = "form-control" })
+
+            @Html.ValidationMessageFor(model => model.LeaveType, "", new { @class = "text-danger" })
+
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.FromDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-4">
+            @Html.EditorFor(model => model.FromDate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.FromDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ToDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-4">
+            @Html.EditorFor(model => model.ToDate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ToDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-4">
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Apply" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<EmployeeLeaveManagementSystem_WebApplication.Models.LeaveType>
+
+@{
+    ViewBag.Title = "ManageLeaveType";
+    Layout = "~/Views/Shared/_DashLayout.cshtml";
+}
+
+<h2>ManageLeaveType</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LeaveTyp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.creationDate)
+        </th>
+        <th>Actions</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LeaveTyp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.creationDate)
+        </td>
+        
+        <td>
+            <a href="@Url.Action("EditLeaveType", "LeaveType", new {  id=item.id  })">
+                <i class="glyphicon glyphicon-pencil" style="font-size:20px;"></i>
+
+            </a>
+
+            <a href="@Url.Action("Delete", "LeaveType", new {  id=item.id  })">
+                <i class="glyphicon glyphicon-remove" style="font-size:20px;"></i>
+
+            </a>
+        </td>
+    </tr>
+}
+
+</table>
